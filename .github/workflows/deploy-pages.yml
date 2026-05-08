@@ -43,8 +43,9 @@ jobs:
           mkdir -p "$HOME/.ssh"
           chmod 700 "$HOME/.ssh"
 
+          ssh-keyscan github.com >> "$HOME/.ssh/known_hosts"
+
           "$HOME/.local/bin/mise" x gh -- gh auth login --hostname github.com --git-protocol ssh
-          "$HOME/.local/bin/mise" x gh -- gh config set -h github.com git_protocol ssh
           "$HOME/.local/bin/mise" x gh -- gh repo clone guria/dot "$HOME/.local/share/chezmoi"
           "$HOME/.local/bin/mise" x chezmoi -- chezmoi apply --init
           EOF
