@@ -23,8 +23,7 @@ jobs:
 
       - name: Sync public entrypoint from setup.sh
         run: |
-          cp setup.sh public/index
-          chmod +x public/index
+          cp setup.sh public/index.html
 
       - name: Upload public site artifact
         uses: actions/upload-pages-artifact@v3
