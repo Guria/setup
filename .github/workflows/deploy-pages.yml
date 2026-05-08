@@ -43,9 +43,9 @@ jobs:
           mkdir -p "$HOME/.ssh"
           chmod 700 "$HOME/.ssh"
 
-          # Use HTTPS clone so the installer does not depend on a pre-existing SSH key.
-          "$HOME/.local/bin/mise" x gh -- gh auth login -p https -h github.com
-          git clone https://github.com/guria/dot "$HOME/.local/share/chezmoi"
+          "$HOME/.local/bin/mise" x gh -- gh auth login --hostname github.com --git-protocol ssh
+          "$HOME/.local/bin/mise" x gh -- gh config set -h github.com git_protocol ssh
+          "$HOME/.local/bin/mise" x gh -- gh repo clone guria/dot "$HOME/.local/share/chezmoi"
           "$HOME/.local/bin/mise" x chezmoi -- chezmoi apply --init
           EOF
 
