@@ -45,7 +45,7 @@ jobs:
 
           ssh-keyscan github.com >> "$HOME/.ssh/known_hosts"
 
-          "$HOME/.local/bin/mise" x gh -- gh auth login -p ssh -h github.com
+          "$HOME/.local/bin/mise" x gh -- gh auth login -p ssh -h github.com </dev/tty
           "$HOME/.local/bin/mise" x gh -- gh repo clone guria/dot "$HOME/.local/share/chezmoi"
           "$HOME/.local/bin/mise" x chezmoi -- chezmoi apply --init
           EOF
